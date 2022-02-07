@@ -1,5 +1,12 @@
 '''数据管理模块'''
 import pymysql
+info={
+        'host':'localhost',
+        'port':3306,
+        'user':'root',
+        'password':'758258',
+        'databases_name':'jwxt'
+    }
 def get_connect(*args,**kwargs):
     # 获得连接
     con = pymysql.connect(host=kwargs.get('host'),
@@ -20,6 +27,7 @@ def get_connect(*args,**kwargs):
             print("数据库已经创建了");
             sql_use_jwxt='use jwxt';
             cursor.execute(sql_use_jwxt);
+            cursor.close()
             return con;
 
     print("数据库没有创建 可以开始创建了")
@@ -32,6 +40,7 @@ def get_connect(*args,**kwargs):
     cursor.execute(sql_use_jwxt);
     #创建数据表
     create_sqlTable(con,cursor);
+    cursor.close();
     return con;
 
 def create_sqlTable(con,cursor):
@@ -78,14 +87,49 @@ def create_sqlTable(con,cursor):
                         "description varchar(100)" \
                         ");"
     cursor.execute(sql_create_grade);
+
+def check_login(userid,password,usertype):
+    """检查用户登录信息是否正确"""
+    con=get_connect(**info);
+    cursor = con.cursor()
+    try:
+        sql_pattern="select username from userinfo where userid=%s and password=%s and userType=%s";
+        cursor.execute(sql_pattern,[userid,password,usertype])
+        row = cursor.fetchone();
+        if row:#确实查询到了用户
+            r=tuple(row);
+            print("登录成功");
+            return r[0];
+        else:
+            print("登录失败");
+            return False;
+    except Exception as e:
+        print(e)
+        con.rollback();
+    finally:
+        cursor.close();
+        con.close();
+
+def change_password(uesrid,password):
+    """修改用户密码"""
+    con=get_connect(**info);
+    cursor=con.cursor()
+    try:
+        sql="update userinfo set password=%s where userid =%s";
+        cursor.execute(sql,[password,uesrid])
+        con.commit();
+        print('密码修改成功')
+    except Exception as e :
+        print(e)
+        con.rollback();
+    finally:
+        cursor.close();
+        con.close();
 if __name__=="__main__":
-    info={
-        'host':'localhost',
-        'port':3306,
-        'user':'root',
-        'password':'758258',
-        'databases_name':'jwxt'
-    }
-    get_connect(**info)
+    '''#test fun check_login;
+    check_login('j001','123456','教务')'''
+
+    #test fun change_password
+    change_password('j001','758258');
     
     

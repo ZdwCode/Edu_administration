@@ -1,5 +1,4 @@
 '''数据管理模块'''
-import colorama
 import pymysql
 info={
         'host':'localhost',

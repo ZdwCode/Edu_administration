@@ -260,7 +260,7 @@ def update_course(courseid,coursename,credit,description):
     con=get_connect(**info);
     cursor=con.cursor();
     try:
-        sql='''update course set cousename=%s,credit=%s,description=%s where courseid=%s;'''
+        sql='''update course set coursename=%s,credit=%s,description=%s where courseid=%s;'''
         cursor.execute(sql,[coursename,credit,description,courseid])
         con.commit();
     except Exception as e:

@@ -224,7 +224,6 @@ def check_course_id(courseid):
     finally:
         cursor.close();
         con.close();
-
 def get_course_list():
     """查找数据库course表 获取课程信息列表"""
     con = get_connect(**info);
@@ -531,3 +530,5 @@ if __name__=="__main__":
 
     #test fun get_grade_list_by_jxbid(classid)
     print(get_grade_list_by_jxbid('1'));
+
+    """测试一下github"""

@@ -5,7 +5,7 @@ class CourseWindow(wx.Dialog):
         wx.Frame.__init__(self,parent,title=title,size=(800,600));
         panel=wx.Panel(self,wx.ID_ANY);
 
-        #创建空间
+        #创建控件
         lblListAction=['插入','修改','删除'];
         self.rboxAction=wx.RadioBox(panel,label='操作',choices=lblListAction);
 

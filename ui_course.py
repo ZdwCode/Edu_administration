@@ -2,7 +2,7 @@ import data;
 import wx
 class CourseWindow(wx.Dialog):
     def __init__(self,parent,title):
-        wx.Frame.__init__(self,parent,title,size=(800,600));
+        wx.Frame.__init__(self,parent,title=title,size=(800,600));
         panel=wx.Panel(self,wx.ID_ANY);
 
         #创建空间
@@ -185,6 +185,6 @@ class CourseWindow(wx.Dialog):
         self.Close();
 if __name__=="__main__":
     app = wx.App()
-    frame = CourseWindow(parent=None, title=2);
+    frame = CourseWindow(parent=None,title="课程管理");
     frame.Show();
     app.MainLoop();

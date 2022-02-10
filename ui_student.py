@@ -3,7 +3,7 @@ import data;
 import wx;
 class StudentWindow(wx.Dialog):
     def __init__(self,parent,title,userid):
-        wx.Frame.__init__(self,parent,title,size=(800,600));
+        wx.Frame.__init__(self,parent,title=title,size=(800,600));
         self.userid=userid;
         panel=wx.Panel(self,wx.ID_ANY);
 

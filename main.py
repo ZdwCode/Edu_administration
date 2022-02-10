@@ -1,10 +1,14 @@
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import wx;
+import ui_login;
 
-
-# Press the green button in the gutter to run the script.
+class App(wx.App):
+    def onInit(self):
+        frame=ui_login.LoginWindow(parent=None,title='系统登录');
+        frame.Show();
+        frame.Centre();
+        return True
 if __name__ == '__main__':
-    print_hi('PyCharm')
+   app=App()
+   app.onInit();
+   app.MainLoop();
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

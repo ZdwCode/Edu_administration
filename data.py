@@ -313,7 +313,7 @@ def get_jxb_list():
         jxb_list=[];
         for jxb in results:
             jxb_list.append(jxb);
-        return jxb;
+        return jxb_list;
     finally:
         cursor.close();
         con.close();

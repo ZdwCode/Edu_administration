@@ -28,7 +28,7 @@ class MainWindow(wx.Frame):
         menuJXB = j_menu.Append(wx.ID_ANY, '开课计划', '开课计划');
         menuStudent = s_menu.Append(wx.ID_ANY, '学生选课', '学生选课');
         menuTeacher = t_menu.Append(wx.ID_ANY, '成绩登录', '成绩登录');
-        menuAbout=helpmenu.Append(wx.ID_ABOUT,'关于我们','关于');
+        menuAbout=helpmenu.Append(wx.ID_ABOUT,'关于我们','关于我们');
 
         menuBar=wx.MenuBar();
         menuBar.Append(sysmenu,'系统');

@@ -226,7 +226,7 @@ class UserWindow(wx.Dialog):
         self.refresh_screen();
     def onDelete(self,e):
         userid = self.inputTextUserId.GetValue();
-        #删除一条记录
+        #删除记录————是否应该考虑逻辑删除
         data.delete_userbyid(userid);
         self.refresh_screen();
     def onExit(self,e):
